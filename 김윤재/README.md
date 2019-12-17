@@ -1,5 +1,5 @@
-## *알고리즘 트레이닝*의 정리
-### ( 원서 *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests* by Antti Laaksonen )
+## *알고리즘 트레이닝* 의 정리
+#### ( 원서 *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests* by Antti Laaksonen )
 
 #### 2장 : 프로그래밍 기법 *Programming Techniques*
 이 장은 C++ 프로그래밍의 특징, 재귀, 비트연산을 다룬다.
