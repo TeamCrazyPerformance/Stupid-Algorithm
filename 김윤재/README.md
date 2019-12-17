@@ -1,1 +1,2 @@
-# 알고리즘 스터디
+# Study Group for *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests* by Antti Laaksonen
+
