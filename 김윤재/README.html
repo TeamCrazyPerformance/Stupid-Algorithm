@@ -23,6 +23,7 @@
     <body class="vscode-light">
         <h2 id="%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98-%ed%8a%b8%eb%a0%88%ec%9d%b4%eb%8b%9d-%ec%9d%98-%ec%a0%95%eb%a6%ac"><em>알고리즘 트레이닝</em> 의 정리</h2>
 <h4 id="guide-to-competitive-programming-learning-and-improving-algorithms-through-contests-by-antti-laaksonen">( <em>Guide to Competitive Programming: Learning and Improving Algorithms Through Contests</em> by Antti Laaksonen )</h4>
+<h4 id="1%ec%9e%a5-%ec%83%9d%eb%9e%b5">1장 생략</h4>
 <h4 id="2%ec%9e%a5--%ed%94%84%eb%a1%9c%ea%b7%b8%eb%9e%98%eb%b0%8d-%ea%b8%b0%eb%b2%95-programming-techniques">2장 : 프로그래밍 기법 <em>Programming Techniques</em></h4>
 <p>이 장은 C++ 프로그래밍의 특징, 재귀, 비트연산을 다룬다.</p>
 <ol>
@@ -35,10 +36,83 @@ int main(){
     //code
 }
 </div></code></code></pre>
+<p>&lt;bits.stdc++&gt; 은 표준 라이브러리 전체를 포함한다. (iostream, vector, algrotihm 등 포함)</p>
 <ol>
-<li>입력과 출력</li>
-<li>수의 처리</li>
-<li>짧은 코드</li>
+<li>
+<p>입력과 출력</p>
+<ul>
+<li>표준 stream 으로 입출력 처리한다.</li>
+</ul>
+<pre><code><code><div>int a,b;
+string str;
+cin&gt;&gt;a&gt;&gt;b&gt;&gt;str;
+</div></code></code></pre>
+<p>개행이나 공백으로 입력 분리된다.</p>
+<ul>
+<li>간혹 입출력이 프로그램의 병목이 될 때가 있으면 아래와 같이 처리한다.</li>
+</ul>
+<pre><code><code><div>ios::sync_with_stdio(0); //standard stream synch -&gt; false
+cin.tie(0); //unties cin from cout
+</div></code></code></pre>
+<ul>
+<li>
+<p>endl 보다 &quot;\n&quot; 이 더 빠르다.</p>
+</li>
+<li>
+<p>데이터 양을 모를때 반복문으로 처리한다. 하나씩 읽어 들이다 데이터가 없을 때 멈춘다.</p>
+</li>
+</ul>
+<pre><code><code><div>while(cin&gt;&gt;x){
+    //code
+}
+</div></code></code></pre>
+<ul>
+<li>데이터가 파일로 주어지면 평소처럼 표준 스트림을 이용하는 방법은 입력이 input.txt, 출력을 output.txt로 할때 다음과 같다.</li>
+</ul>
+<pre><code><code><div>freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);
+freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);
+</div></code></code></pre>
+</li>
+<li>
+<p>수의 처리</p>
+<ul>
+<li>정수의 처리
+알고리즘 경진에서 int의 범위(최대 2^31-1)를 벗어나게 되는 큰 수는 보통 long long으로 처리하게 된다. 이때 조심해야 할 버그가 있다.</li>
+</ul>
+<pre><code><code><div>int x = 6666666666;
+long long y = x*x;
+cout&lt;&lt;y&lt;&lt;&quot;\n&quot;; //Overflows.
+</div></code></code></pre>
+<p>이는 y의 자료형이 long long이지만 x*x에 포함된 수의 자료형이 int로 결과도 int로 처리되기 때문이다.</p>
+<pre><code><code><div>long long y = (long long)x*x;
+</div></code></code></pre>
+<p>로 바꾸어주면 된다.</p>
+<ul>
+<li>나머지 연산
+나머지 (Modulo) 연산은 (a+b) mod m = ( (a mod m) + (b mod m) ) mod m 을 만족한다. 이를 이용하여 값을 작게 유지하기 위해 연산을 수행할 때마다 mod를 취해 주면 된다.
+예를 들어 n!을 m으로 나눈 나머지를 구하는 코드가 있다.</li>
+</ul>
+<pre><code><code><div>long long x=1;
+for(int i=1;i&lt;=n;i++) x=(x*i)%m;
+cout&lt;&lt;x&lt;&lt;&quot;\n&quot;&gt;&gt;;
+</div></code></code></pre>
+<p>C++ 언어가 음수의 나머지를 음수로 취급함에 따라 음수면 m을 더해주면 된다.</p>
+<pre><code><code><div>if(x&lt;0) x += m;
+</div></code></code></pre>
+<ul>
+<li>
+<p>부동 소수점 실수 (float, double)
+long double이 정밀도가 높아 사용하기 좋다. 부동 소수점 오차는 == 연산자를 사용하지 않고 두 수의 차이가 (\epsilon)</p>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+<li>
+<p>짧은 코드</p>
+</li>
 </ol>
 </li>
 <li>
@@ -46,6 +120,7 @@ int main(){
 </li>
 <li></li>
 </ol>
+<h4 id="3%ec%9e%a5--%ed%9a%a8%ec%9c%a8%ec%84%b1-programming-techniques">3장 : 효율성 <em>Programming Techniques</em></h4>
 
     </body>
     </html>
