@@ -93,6 +93,9 @@ void search(int k){
 }
 ```
 
+이 알고리즘은 백준에서 *부분순열의 합(1182번)* 으로 연습할 수 있다.
+해당 풀이 코드는 [여기](https://github.com/TeamCrazyPerformance/StupidAlgorithm/blob/master/%ED%95%A8%ED%83%9C%EC%98%81/Chapter2/algo1182.java)에서 확인 가능하다.
+
 ### 2.2.2 순열 생성하기
 부분집합과 다르게 주어진 집합 내에서 가능한 모든 순열을 찾는 알고리즘이다.
 .. 코드가 이해안된다. 스터디하면서 정리하자.
