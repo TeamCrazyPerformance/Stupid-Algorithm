@@ -1,12 +1,12 @@
-## *알고리즘 트레이닝* 의 정리
-#### ( *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests* by Antti Laaksonen )
+# *알고리즘 트레이닝* 의 정리
+### ( *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests* by Antti Laaksonen )
 
-#### 1장은 생략
+## 1장 생략
 
-#### 2장 : 프로그래밍 기법 *Programming Techniques*
+## 2장 : 프로그래밍 기법 *Programming Techniques*
 이 장은 C++ 프로그래밍의 특징, 재귀, 비트연산을 다룬다.
 
-1. 언어적 특성 *Language Features*
+#### 2.1 언어적 특성 *Language Features*
    
    표쥰적 경진 프로그래밍 코드 형태 :
    ```
@@ -18,7 +18,7 @@
    ```
    <bits.stdc++> 은 표준 라이브러리 전체를 포함한다. (iostream, vector, algrotihm 등 포함)
 
-    1. 입력과 출력
+##### 2.1.1 입력과 출력
 
         - 표준 stream 으로 입출력 처리한다. 
         ```cpp
@@ -48,7 +48,7 @@
         freopen("output.txt","w",stdout);
         ```
 
-    2. 수의 처리
+##### 2.1.2 수의 처리
         - 정수의 처리
         알고리즘 경진에서 int의 범위(최대 2^31-1)를 벗어나게 되는 큰 수는 보통 long long으로 처리하게 된다. 이때 조심해야 할 버그가 있다.
         ```cpp
@@ -87,7 +87,7 @@
         }
         ```
       
-    3. 짧은 코드
+##### 2.1.3 짧은 코드
         - 자료형
         typedef 로 자료형을 짧게 줄일 수 있다.
         ```cpp
@@ -105,11 +105,17 @@
         SWAP(a, b, int);
         ```
 
-2. 재귀적 알고리즘
-    1. 부분집합 생성하기
-        
-    2. 
-3. 비트 연산
-*연산자는 생략*
+#### 2.2 재귀적 알고리즘
 
-#### 3장 : 효율성 *Programming Techniques*
+##### 2.2.1 부분집합 생성하기
+        원소가 n개인 집합의 부분집합을 모두 생산하는 알고리즘을 재귀로 구현한다.
+        ```cpp
+        
+        ```
+##### 2.2.2 순열 ( Permutations )
+
+##### 2.2.3 퇴각 검색 ( Backtracking )
+
+#### 2.3 비트 연산
+
+## 3장 : 효율성 *Programming Techniques*
