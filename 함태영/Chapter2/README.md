@@ -136,6 +136,9 @@ void search(int y){
 를 체크하기 위함이다.
 이에 대한 그림은 그림 2.4를 참조하면 된다.
 
+이 알고리즘은 백준에서 **N-Queen(9663)** 으로 연습할 수 있다.
+해당 풀이 코드는 [여기](https://github.com/TeamCrazyPerformance/StupidAlgorithm/blob/master/%ED%95%A8%ED%83%9C%EC%98%81/Chapter2/algo9663.java)에서 확인 가능하다.
+
 ## 2.3 비트 연산
 할 필요가 있을까. 나중에 읽을래.
 ### 2.3.1 비트 연산
