@@ -5,6 +5,7 @@
 기본적인 정렬 중 하나이다.
 시간 복잡도는 *`O(n^2)`* 이며 n번의 라운드마다 모든 원소들을 비교하여 swap한다.
 아래는 버블정렬을 도식화 한 것이다.
+
 ![Bubble Sort](https://upload.wikimedia.org/wikipedia/commons/2/2a/Bubble_sort_with_flag.gif)
 
 각 라운드마다 오른쪽 원소와 비교하여 swap을 진행하는데, 코드는 아래와 같다.
