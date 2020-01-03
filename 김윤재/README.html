@@ -26,28 +26,26 @@
 <h2 id="1%ec%9e%a5-%ec%83%9d%eb%9e%b5">1장 생략</h2>
 <h2 id="2%ec%9e%a5--%ed%94%84%eb%a1%9c%ea%b7%b8%eb%9e%98%eb%b0%8d-%ea%b8%b0%eb%b2%95-programming-techniques">2장 : 프로그래밍 기법 <em>Programming Techniques</em></h2>
 <p>이 장은 C++ 프로그래밍의 특징, 재귀, 비트연산을 다룬다.</p>
-<h4 id="21-%ec%96%b8%ec%96%b4%ec%a0%81-%ed%8a%b9%ec%84%b1-language-features">2.1 언어적 특성 <em>Language Features</em></h4>
+<h3 id="21-%ec%96%b8%ec%96%b4%ec%a0%81-%ed%8a%b9%ec%84%b1-language-features">2.1 언어적 특성 <em>Language Features</em></h3>
 <p>표쥰적 경진 프로그래밍 코드 형태 :</p>
-<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits.stdc++&gt;</span></span>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
     <span class="hljs-comment">//code</span>
 }
 </div></code></pre>
 <p>&lt;bits.stdc++&gt; 은 표준 라이브러리 전체를 포함한다. (iostream, vector, algrotihm 등 포함)</p>
-<h5 id="211-%ec%9e%85%eb%a0%a5%ea%b3%bc-%ec%b6%9c%eb%a0%a5">2.1.1 입력과 출력</h5>
+<h4 id="211-%ec%9e%85%eb%a0%a5%ea%b3%bc-%ec%b6%9c%eb%a0%a5">2.1.1 입력과 출력</h4>
 <ul>
-<li>
-<p>표준 stream 으로 입출력 처리한다.</p>
+<li>표준 stream 으로 입출력 처리한다.</li>
+</ul>
 <pre><code class="language-cpp"><div><span class="hljs-keyword">int</span> a,b;
 <span class="hljs-built_in">string</span> str;
 <span class="hljs-built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;str;
 </div></code></pre>
 <p>개행이나 공백으로 입력 분리된다.</p>
-</li>
-<li>
-<p>간혹 입출력이 프로그램의 병목이 될 때가 있으면 아래와 같이 처리한다.</p>
-</li>
+<ul>
+<li>간혹 입출력이 프로그램의 병목이 될 때가 있으면 아래와 같이 처리한다.</li>
 </ul>
 <pre><code class="language-cpp"><div>ios::sync_with_stdio(<span class="hljs-number">0</span>); <span class="hljs-comment">//standard stream synch -&gt; false</span>
 <span class="hljs-built_in">cin</span>.tie(<span class="hljs-number">0</span>); <span class="hljs-comment">//unties cin from cout</span>
@@ -70,7 +68,7 @@
 <pre><code class="language-cpp"><div>freopen(<span class="hljs-string">"input.txt"</span>,<span class="hljs-string">"r"</span>,<span class="hljs-built_in">stdin</span>);
 freopen(<span class="hljs-string">"output.txt"</span>,<span class="hljs-string">"w"</span>,<span class="hljs-built_in">stdout</span>);
 </div></code></pre>
-<h5 id="212-%ec%88%98%ec%9d%98-%ec%b2%98%eb%a6%ac">2.1.2 수의 처리</h5>
+<h4 id="212-%ec%88%98%ec%9d%98-%ec%b2%98%eb%a6%ac">2.1.2 수의 처리</h4>
 <ul>
 <li>정수의 처리
 알고리즘 경진에서 int의 범위(최대 2^31-1)를 벗어나게 되는 큰 수는 보통 long long으로 처리하게 된다. 이때 조심해야 할 버그가 있다.</li>
@@ -107,7 +105,7 @@ long double이 정밀도가 높아 사용하기 좋다. 부동 소수점 오차�
 <span class="hljs-comment">// a,b 값은 오차로 미묘하게 다르다.</span>
 }
 </div></code></pre>
-<h5 id="213-%ec%a7%a7%ec%9d%80-%ec%bd%94%eb%93%9c">2.1.3 짧은 코드</h5>
+<h3 id="213-%ec%a7%a7%ec%9d%80-%ec%bd%94%eb%93%9c">2.1.3 짧은 코드</h3>
 <ul>
 <li>자료형
 typedef 로 자료형을 짧게 줄일 수 있다.</li>
@@ -124,19 +122,128 @@ typedef 로 자료형을 짧게 줄일 수 있다.</li>
 <p>SWAP 매크로는 타입을 사용해서</p>
 <pre><code class="language-cpp"><div>SWAP(a, b, <span class="hljs-keyword">int</span>);
 </div></code></pre>
-<h4 id="22-%ec%9e%ac%ea%b7%80%ec%a0%81-%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98">2.2 재귀적 알고리즘</h4>
-<h5 id="221-%eb%b6%80%eb%b6%84%ec%a7%91%ed%95%a9-%ec%83%9d%ec%84%b1%ed%95%98%ea%b8%b0">2.2.1 부분집합 생성하기</h5>
+<h3 id="22-%ec%9e%ac%ea%b7%80%ec%a0%81-%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98">2.2 재귀적 알고리즘</h3>
+<h3 id="221-%eb%b6%80%eb%b6%84%ec%a7%91%ed%95%a9-%ec%83%9d%ec%84%b1%ed%95%98%ea%b8%b0">2.2.1 부분집합 생성하기</h3>
 <p>원소가 n개인 집합의 부분집합을 모두 생산하는 알고리즘을 재귀로 구현한다.
 하나의 원소씩 포함하거나 제외하는 2^n 번의 과정을 재귀로 구현하기 좋다.</p>
-<pre><code class="language-cpp"><div>
+<pre><code class="language-cpp"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">subsets</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; A, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; save, 
+                 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; currentSet, <span class="hljs-keyword">int</span> k)</span> 
+</span>{ 
+    save.push_back(currentSet); 
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = k; i &lt; A.size(); i++) { 
+        currentSet.push_back(A[i]); <span class="hljs-comment">// 원소 포함 </span>
+        subsets(A, save, currentSet, i+<span class="hljs-number">1</span>); 
+        currentSet.pop_back(); <span class="hljs-comment">// 원소 제외</span>
+    } 
+  
+    <span class="hljs-keyword">return</span>; 
+} 
+
 </div></code></pre>
-<h5 id="222-%ec%88%9c%ec%97%b4--permutations">2.2.2 순열 ( Permutations )</h5>
-<h5 id="223-%ed%87%b4%ea%b0%81-%ea%b2%80%ec%83%89--backtracking">2.2.3 퇴각 검색 ( Backtracking )</h5>
-<h4 id="23-%eb%b9%84%ed%8a%b8-%ec%97%b0%ec%82%b0">2.3 비트 연산</h4>
+<h4 id="222-%ec%88%9c%ec%97%b4--permutations">2.2.2 순열 ( Permutations )</h4>
+<p>부분집합과 유사한 방법으로 각 원소를 이번 순열에 포함 시켰는지 포함하지 않았는지를 결정하는 배열을 두고 재귀한다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">permutations</span><span class="hljs-params">(<span class="hljs-keyword">int</span> input, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; save)</span> 
+</span>{
+    <span class="hljs-keyword">if</span> (permutationSet.size()==input){
+        save.push_back(permutationSet);
+    }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= input; i++) {
+        <span class="hljs-keyword">if</span>(chosen[i])<span class="hljs-keyword">continue</span>;
+        chosen[i]=<span class="hljs-literal">true</span>;
+        permutationSet.push_back(i);
+        permutations(input,save);
+        chosen[i]=<span class="hljs-literal">false</span>;
+        permutationSet.pop_back();
+    }    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
+}
+
+</div></code></pre>
+<h4 id="223-%ed%87%b4%ea%b0%81-%ea%b2%80%ec%83%89--backtracking">2.2.3 퇴각 검색 ( Backtracking )</h4>
 <h2 id="3%ec%9e%a5--%ed%9a%a8%ec%9c%a8%ec%84%b1">3장 : 효율성</h2>
-<p>이 장은 알고리즘의 시간 복잡도를 다루어 알고리즘의 효율성을 다룬다.</p>
-<h4 id="31-%ec%8b%9c%ea%b0%84-%eb%b3%b5%ec%9e%a1%eb%8f%84">3.1 시간 복잡도</h4>
-<h4 id="32">3.2</h4>
+<p>이 장은 알고리즘의 시간 복잡도를 다루어 알고리즘의 효율성을 다룬다.
+빅오 표기법 (Big-O Notation) 과 앞서 소개된 문제의 시간 복잡도를 설명한다.</p>
+<h2 id="4%ec%9e%a5--%ec%a0%95%eb%a0%ac%ea%b3%bc-%ed%83%90%ec%83%89">4장 : 정렬과 탐색</h2>
+<p>4장에서는 입력된 데이터를 정렬하고 탐색하는 알고리즘을 다룬다.</p>
+<h3 id="41-%ec%a0%95%eb%a0%ac-%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98">4.1 정렬 알고리즘</h3>
+<p>기본적인 정렬 문제는 원소가 n개 주어질 때 원소들을 크기가 증가하거나 감소하는 순서로 정렬하는 문제이다.</p>
+<h4 id="411-bubble-sort">4.1.1 Bubble Sort</h4>
+<p>버블 정렬(Bubble Sort)는 가장 직관적 정렬 알고리즘으로 <em>O(n^2)</em> 시간 동안 동작하며 간단한 2중 for 문으로 구현된다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++){
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n<span class="hljs-number">-1</span>;j++){
+        <span class="hljs-keyword">if</span>(arr[j]&gt;arr[j+<span class="hljs-number">1</span>])
+        swap(arr[j],arr[j+<span class="hljs-number">1</span>]);
+    }
+}
+</div></code></pre>
+<p>가장 큰 원소부터 올바른 위치에 놓이게 되는 원리로 한 페어씩 비교되어 정렬된다.</p>
+<h5 id="%ec%97%ad%ec%9c%84"><em>역위</em></h5>
+<p><em>역위 (inversion)</em> 는 정렬 알고리즘을 분석할 때 유용한 개념이다.
+배열의 index 는 a&lt;b 이지만 값 array[a]&gt;array[b] 일때 이를 역위라 한다.
+역위의 개수가 배열을 정렬하는데 필요한 작업량을 결정한다.
+정렬 알고리즘이 연달아 있는 원소만 바꾼다면 역위의 개수대로 연산을 해야해서
+1+2+ ... (n-1) = n(n-1)/2 = <em>O(n^2)</em> 이 될 수 밖에 없다.</p>
+<h4 id="412-merge-sort">4.1.2 Merge Sort</h4>
+<p>정렬 알고리즘의 효율을 높이기 위해서는 배열의 바로 옆이 아닌 다른 위치에 있는 원소들의 순서를 바로 잡아야 한다.
+그러한 방식을 이용하는 병합 정렬 (Merge Sort) 은 <em>O(n log n)</em> 시간 복잡도를 가진다.</p>
+<p>병합 정렬은 부분 배열 arr[a,...,b]에 대해 다음과 같은 절차를 따라 재귀적으로 실행된다.</p>
+<ol>
+<li>원소가 하나 (a==b) 라면 아무것도 하지 않는다.</li>
+<li>가운데 원소의 위치를 k = (a+b)/2 로 계산한다.</li>
+<li>재귀적으로 arr[a,...,k]를 정렬한다.</li>
+<li>재귀적으로 arr[k,...,b]를 정렬한다.</li>
+<li>3번의 부분배열과 4번의 부분배열을 병합하여 정렬된 배열 arr[a,...,b]를 만든다.</li>
+</ol>
+<p>단계마다 부분배열의 크기를 절반으로 줄여 재귀 호출은 log2(n)으로 O(log n) 이 되고 각 단계의 처리가 *O(n)*이 되어 <em>O(n log n)</em> 복잡도가 된다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge_sort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *arr, <span class="hljs-keyword">int</span> low, <span class="hljs-keyword">int</span> high)</span>
+</span>{
+    <span class="hljs-keyword">int</span> mid;
+    <span class="hljs-keyword">if</span> (low &lt; high){
+       
+        mid=(low+high)/<span class="hljs-number">2</span>;
+        merge_sort(arr,low,mid);
+        merge_sort(arr,mid+<span class="hljs-number">1</span>,high);
+        merge(arr,low,high,mid);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span>;
+}
+</div></code></pre>
+<h4 id="413-%ec%a0%95%eb%a0%ac%ec%9d%98-%ed%95%98%ed%95%9c-lower-bound">4.1.3 정렬의 하한 Lower Bound</h4>
+<p>배열의 원소를 비교하는 연산만으로는 <em>O(n log n)</em> 보다 빠르게 정렬할 수 없다.</p>
+<h4 id="414-counting-sort">4.1.4 Counting Sort</h4>
+<p>계수정렬(Counting Sort)은 배열의 원소를 직접 비교하지 않고 다른 정보를 이용하여 <em>O(n log n)</em> 이라는 하한이 적용되지 않는다. 이 알고리즘은 장부와 같은 배열을 사용하고 이 장부 배열의 인덱스가 원래 배열의 원소가 된다.
+( 원래 배열의 원소가 0 ... c 범위의 정수 일 때만 사용 할 수 있다 )
+이 알고리즘은 원래 배열에 1이라는 원소가 3번 들어있으면 장부 배열의 인덱스 1의 값을 3으로 등록하는 알고리즘으로 <em>O(n)</em> 시간 만이 걸린다.</p>
+<h4 id="415-%ec%8b%a4%ec%a0%9c-%ec%83%81%ed%99%a9%ec%97%90%ec%84%9c%ec%9d%98-%ec%a0%95%eb%a0%ac">4.1.5 실제 상황에서의 정렬</h4>
+<p>실제 상황에서는 정렬 알고리즘을 구현하지 않고 보통 라이브러리에 있는 정렬 함수를 사용한다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-comment">//일반적 벡터의 정렬</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vect = {<span class="hljs-number">6</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>};
+sort(vect.begin(),vect.end());
+<span class="hljs-comment">//일반적 배열의 정렬</span>
+<span class="hljs-keyword">int</span> arr[] = {<span class="hljs-number">6</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>};
+<span class="hljs-keyword">int</span> size=<span class="hljs-keyword">sizeof</span>(arr)/<span class="hljs-keyword">sizeof</span>(arr[<span class="hljs-number">0</span>]);
+sort(arr,arr+size);
+</div></code></pre>
+<h5 id="%eb%b9%84%ea%b5%90-%ec%97%b0%ec%82%b0%ec%9e%90-comparison-operator">비교 연산자 (Comparison Operator)</h5>
+<p>sort 함수를 사용할 때는 원소의 자료형에 대한 비교 연산자가 정의되어 있어야한다.
+대부분의 C++ 자료형은 비교연산자가 정의되어있어 숫자는 크기, 문자열은 알파벳 순으로 정렬된다.
+두 원소의 pair 의 경우는 첫 원소를 기준으로, 그 다음에는 두 번째 원소를 기준으로 정렬된다.</p>
+<p>사용자 정의 구조체는 기본 비교 연산자가 없어 operator&lt; 형식으로 정의해야 한다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">myStruct</span> {</span>
+    <span class="hljs-keyword">int</span> x,y;
+    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> myStruct &amp;m){
+        <span class="hljs-keyword">if</span>(x==m.x)<span class="hljs-keyword">return</span> y&lt;m.y;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> x&lt;m.x;
+    }
+}
+</div></code></pre>
+<h5 id="%eb%b9%84%ea%b5%90-%ed%95%a8%ec%88%98-comparison-function">비교 함수 (Comparison Function)</h5>
+<p>외부에 정의한 비교 함수를 sort 함수에 콜백 형태로 넘길 수 있다.</p>
+<pre><code class="language-cpp"><div>sort(vect.begin(),vect.end(),compare);
+</div></code></pre>
+<h3 id="42-%ec%a0%95%eb%a0%ac%ec%9d%84-%ec%9d%b4%ec%9a%a9%ed%95%9c-%eb%ac%b8%ec%a0%9c-%ed%92%80%ec%9d%b4">4.2 정렬을 이용한 문제 풀이</h3>
+<p>정렬을 하면 효율을 좋게 설게 할 수 있는 알고리즘이 많다. 예를 들어, 한 배열의 모든 원소가 같은가를 검사하는 알고리즘은 이중 for문으로 모든 원소를 모든 원소와 비교하는 방식보다 그 배열을 정렬 한 뒤 옆의 원소와의 비교만을 하는 방식이 효율이 좋다. ( *O(n^2) -&gt; O(n) *)</p>
+<h4 id="421-%ec%8a%a4%ec%9c%95-%eb%9d%bc%ec%9d%b8-%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98">4.2.1 스윕 라인 알고리즘</h4>
 
     </body>
     </html>

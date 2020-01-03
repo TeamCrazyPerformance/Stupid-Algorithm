@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<bool> chosen;
+bool chosen[9]={0};
 vector<int> permutationSet;
 
 int permutations(int input, vector<vector<int>>& save) 
@@ -21,8 +21,8 @@ int permutations(int input, vector<vector<int>>& save)
 }
 
 int main(){
-    int input = 4;
-    
+    int input;
+    cin>>input;
     vector<vector<int>> save;
 
     permutations(input,save);
