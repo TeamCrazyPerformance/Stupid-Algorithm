@@ -443,8 +443,23 @@ if(it==s.end()){
 ```
 가장 큰 c++ STL 집합의 차이는 set은 정렬되어있고 unordered_set은 그렇지 않다.
 
-멀티셋은 같은값을 여러개 가질 수 있는 집합이다.
+멀티셋은 같은값을 여러개 가질 수 있는 집합이다. multiset 과 unordered_multiset이 있다.
 
 #### 5.2.2 맵
+
+맵(Map)은 키와 쌍을 저장하는 집합이다. 
+
+```cpp
+map<string,int> m;
+m["monkey"]=5; 
+```
+
+#### 5.2.3 우선순위큐
+
+우선순위 큐(Priority Queue)는 원소의 추가, 탐색, 그리고 삭제가 되는 멀티셋이다.
+우선순위 큐는 특별한 형태의 이진 트리인 힙(heap)을 기반으로 한다.
+(push,pop,top)
+
+## 6장 : 동적 계획법 Dynamic Programming
 
 
