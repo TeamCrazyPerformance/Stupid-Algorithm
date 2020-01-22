@@ -26,12 +26,12 @@
 
 ### 깊이우선탐색 DFS
 - 시작 노드에서부터 출발하여 그래프의 간선을 따라 이동해가며 도달 가능한 모든 노드를 처리
-![https://t1.daumcdn.net/cfile/tistory/23357644591DCAA123]
+![.](https://t1.daumcdn.net/cfile/tistory/23357644591DCAA123)
 
 
 ### 너비우선탐색 BFS
 - 시작 노드에서 각 노드까지의 거리가 증가하는 순서대로 노드를 방문
-![https://t1.daumcdn.net/cfile/tistory/23357644591DCAA123]
+![.](https://t1.daumcdn.net/cfile/tistory/23357644591DCAA123)
 
 ### 응용
 - 연결성 확인 : 임의의 노드에서 출발하여 모든 노드를 방문한다면 연결 그래프라고 판단
