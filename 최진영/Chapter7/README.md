@@ -52,24 +52,24 @@
 - 효율적이지만 음수 가중치가 없는 경우에만 사용할 수 있다.
 - 아직 처리하지 않은 노드 중 거리가 가장 작은 노드를 찾고, 그 노드에서 시작하는 모든 간선을 쭉 살펴보며 노드까지의 거리를 줄일 수 있다면 줄인다.
 
-!(https://mblogthumb-phinf.pstatic.net/20151001_11/babobigi_1443697819836o9NVh_JPEG/dijkstra.jpg?type=w2)
+![.](https://mblogthumb-phinf.pstatic.net/20151001_11/babobigi_1443697819836o9NVh_JPEG/dijkstra.jpg?type=w2)
 
 ### 플로이드-워셜 알고리즘
 - 알고리즘을 단 한번 실행하므로써 모든 노드 간 최단 경로를 구할 수 있다는 데 있다.
 - 인접 행렬을 초기값으로 가진 후, 라운드마다 각 경로에서 새로운 중간 노드로 사용할 수 있는 노드를 선택하고 거리를 줄이는 과정을 반복한다.
 
-!(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F996CA43359E578C712C312)
-!(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile2.uf.tistory.com%2Fimage%2F99D28C3359E578ED1CAB50)
-!(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F990A863359E5791214F6CF)
-!(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile30.uf.tistory.com%2Fimage%2F999F2A3359E57954021647)
-!(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F996FEF3359E5798A11640A)
+![.](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F996CA43359E578C712C312)
+![.](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile2.uf.tistory.com%2Fimage%2F99D28C3359E578ED1CAB50)
+![.](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F990A863359E5791214F6CF)
+![.](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile30.uf.tistory.com%2Fimage%2F999F2A3359E57954021647)
+![.](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F996FEF3359E5798A11640A)
 
 ### 프림 알고리즘
 - 모든 꼭짓점이 트리에 포함되어 있지 않은 동안 트리와 연결된 변 가운데 트리 속의 두 꼭짓점을 연결하지 않는 가장 가중치가 작은 변을 트리에 추가한다.
 
-!(https://gmlwjd9405.github.io/images/algorithm-mst/prim-example.png)
+![.](https://gmlwjd9405.github.io/images/algorithm-mst/prim-example.png)
 
 ### 크루스칼 알고리즘
 - 간선들을 오름차순으로 정렬한 뒤에 순서대로 사이클을 형성하지 않는 간선을 선택한다.
 
-!(https://gmlwjd9405.github.io/images/algorithm-mst/kruskal-example2.png)
+![.](https://gmlwjd9405.github.io/images/algorithm-mst/kruskal-example2.png)
