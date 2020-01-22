@@ -46,7 +46,7 @@
 - 시작노드에서 다른 노드 까지의 길이를 모두 추적한다. 거리의 초깃값은 시작 노드의 경우 0 이고 다른 모든 노드의 경우 무한대의 값으로 설정된다. 그리고 이값을 계속해서 줄여나가는 과정을 더는 줄일 수 있는 값이 없을때까지 반복한다.
 - 벨만 포드 알고리즘을 n번의 라운드로 진행했을 때, 마지막 라운드에서도 거리가 줄어드는 경우가 있다면 음수사이클이 존재함을 알 수 있다.
 
-!(http://mblogthumb3.phinf.naver.net/MjAxNzAxMDVfMTY4/MDAxNDgzNTQzMzA1MDIy.LAQdHxB9WtH_CBECnXc8ynylJmnwwLHakc0CfsRd0h4g.o4W4vUQvIsK6jw2di-IUHBCxFyRIK5Ptwvjme7LVmjEg.JPEG.yeop9657/bellman.jpg?type=w800)
+![.](http://mblogthumb3.phinf.naver.net/MjAxNzAxMDVfMTY4/MDAxNDgzNTQzMzA1MDIy.LAQdHxB9WtH_CBECnXc8ynylJmnwwLHakc0CfsRd0h4g.o4W4vUQvIsK6jw2di-IUHBCxFyRIK5Ptwvjme7LVmjEg.JPEG.yeop9657/bellman.jpg?type=w800)
 
 ### 다익스트라 알고리즘
 - 효율적이지만 음수 가중치가 없는 경우에만 사용할 수 있다.
