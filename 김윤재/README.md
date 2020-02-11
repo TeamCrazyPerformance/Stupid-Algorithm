@@ -623,7 +623,146 @@ for (int k=0; k<n; k++){
 
 인접 리스트는 그래프의 각 노드 x에 대한 인접 리스트를 관리한다. (x에서 출발하여 그 노드에 도착하는 간선이 있는 노드의 리스트)
 인접 리스트가 그래프를 나타내는 가장 대표적인 방법으로 대부분의 그래프 알고리즘에서 활용한다.
+인접 리스트는 벡터의 배열 혹은 배열의 배열을 이용해 구현하여 저장할 수 있다.
 
+```cpp
+vector<int> adjacencyList[N];
 
+adjacencyList[1].push_back(2); //1->2 edge 있다는 뜻
+```
 
+무방향 그래프는 각각의 간선이 양방향에 대해 저장되면 된다.
+
+가중 그래프는 값을 추가하여 확장하면 된다.
+
+```cpp
+vector<pair<int,int>> adj[N];
+```
+이런 경우 인접 리스트에는 (b,w)로 값이 저장되어 b로 향하는 간선이 w의 가중치를 갖는다는 의미가 된다.
+
+인접 리스트를 사용하면 주어진 노드에서 출발하여 갈 수 있는 노드를 효율적으로 처리할 수 있다.
+
+```cpp
+for(auto i : adj[s]){
+    //노드 처리
+}
+```
+#### 인접 행렬 (Adjacency Matrix)
+
+그래프에 포함된 간선을 나타내는 행렬을 인접 행렬이라 한다.
+인접 행렬은 두 노드 사이에 간선이 있는지를 효율적으로 확인 할 수 있도록 한다.
+행렬의 인덱스 [m][n]에 1이 있으면 m->n 으로 향하는 간선이 있는것이다.
+
+```cpp
+int adj[N][N];
+```
+
+ex)
+0 1 0 0
+0 0 1 0
+1 1 0 0
+0 0 0 1
+
+#### 간선 리스트 (Edge List)
+
+간선 리스트는 그래프의 모든 간선을 특정한 순서에 따라 저장한 리스트이다.
+특정한 노드에서 출발하는 간선보다 모든 간선을 살펴보는 형태를 필요로 할때 유용하다.
+
+```cpp
+vector<pair<int,int>> edges;
+
+edges.push_back({1,2}); //1->2 edge 추가
+```
+
+가중 그래프는 다음과 같이 구현할 수 있다.
+
+```cpp
+vector<tuple<int,int,int>> edges;
+```
+
+### 7.2 그래프 순회
+
+깊이 우선 탐색 (DFS : Depth First Search) 과 너비 우선 탐색 (BFS: Breadth First Search) 알고리즘을 알아본다.
+
+#### 7.2.1 깊이 우선 탐색 (DFS)
+
+<img src="https://he-s3.s3.amazonaws.com/media/uploads/9fa1119.jpg" width="200" height="150"/>
+
+재귀적 알고리즘으로 간단히 구현 할 수 있다.
+
+```cpp
+#define N 100
+
+vector<int> adj[N]; //adjacency list
+bool visited[N];
+
+void dfs(int i){
+    if (visited[i]=true) return;
+    visited[s] = true;
+    // 해당 노드 i 처리
+    for(auto u = adj[s]){ //간선타고 들어가서 노드 처리
+        dfs(u);
+    }
+}
+```
+
+#### 7.2.2 너비 우선 탐색 (BFS)
+
+너비 우선 탐색은 시작 노드에서 거리가 증가하는 순서대로 노드들을 방문한다. 
+
+<img src="https://he-s3.s3.amazonaws.com/media/uploads/fdec3c2.jpg" width="200" height="120">
+
+너비 우선 탐색은 그래프의 여러 부분에 걸쳐 진행되어 구현이 깊이 우선 보다 조금 어렵다.
+
+다음 코드는 방문할 노드를 큐에 저장해 단계마다 큐에서 다음 노드를 가져와 처리하도록 한다.
+
+```cpp
+#define N 100
+
+queue<int> q;
+bool visited[N];
+int distance[N];
+
+//starts at node x
+visited[x]=true;
+distance[x]=0;
+q.push(x);
+
+while(!q.empty()){
+    int s = q.front(); q.pop();
+    // 노드 s 처리
+    for(auto u: adj[s]){
+        if (visited[u]) continue; //already transversed -> 넘어가기
+        visited[u]=true;
+        distance[u]=distance[s]+1;
+        q.push(u);
+    } //한번 돌면서 큐에 넣고 다시 처리
+}
+
+```
+
+#### 7.2.3 응용
+
+그래프 순회 알고리즘으로 그래프의 특성을 검사 할 수 있다.
+아래의 예시에서는 그래프를 무방향 그래프로 간주한다.
+
+#### 연결성 확인
+그래프의 모든 노드 사이에 경로가 있는 경우 연결 그래프라 한다.
+그래프의 연결성을 확인 하기 위해 임의의 노드에서 출발하여 다른 모든 노드를 방문 할 수 있는지를 확인하면 된다. (DFS)
+
+#### 사이클 찾기
+탐색과정에서 이미 방문했던 노드가 이웃노드에 포함되어 있다면 이 경우 그래프에 사이클이 있다고 판단할 수 있다. (DFS)
+
+#### 이분성 확인 (Bipartite : Bipartality?, Bipartiality?)
+두가지 색 X 와 Y를 정하고 시작노드를 X 로 칠하고 이웃을 Y로 칠하고 그의 이웃을 X 로 칠하는 과저을 반복 할 때 이웃한 두 노드가
+같은 색인 경우를 찾으면 (DFS) 이 그래프는 이분 그래프가 아니라고 할 수 있다.
+이 문제의 일반화인 k가지 색의 사용으로 (k>=3) 색을 칠 할 수 있는 지는 np - hard (Not NP-complete) 한 문제이다.
+
+### 7.3 최단 경로 
+
+가중 그래프에서 최단 경로를 구하기 위한 알고리즘을 구한다. (비가중 그래프는 각 간선의 가중치를 1로 하여 길이가 가장 짧은 경로를 찾으면 된다.)
+
+#### 7.3.1 밸만-포드 알고리즘 (Bellman-Ford)
+
+밸만-포드 알고리즘은 시작노드에서 다른 모든 노드로 가는 최단 경로를 구하는 알고리즘이다.
 
