@@ -160,7 +160,7 @@ typedef 로 자료형을 짧게 줄일 수 있다.</li>
 
 </div></code></pre>
 <h4 id="223-%ed%87%b4%ea%b0%81-%ea%b2%80%ec%83%89--backtracking">2.2.3 퇴각 검색 ( Backtracking )</h4>
-<h2 id="3%ec%9e%a5--%ed%9a%a8%ec%9c%a8%ec%84%b1">3장 : 효율성</h2>
+<h2 id="3%ec%9e%a5--%ed%9a%a8%ec%9c%a8%ec%84%b1-efficiency">3장 : 효율성 <em>Efficiency</em></h2>
 <p>이 장은 알고리즘의 시간 복잡도를 다루어 알고리즘의 효율성을 다룬다.
 빅오 표기법 (Big-O Notation) 과 앞서 소개된 문제의 시간 복잡도를 설명한다.</p>
 <h2 id="4%ec%9e%a5--%ec%a0%95%eb%a0%ac%ea%b3%bc-%ed%83%90%ec%83%89">4장 : 정렬과 탐색</h2>
@@ -641,9 +641,50 @@ q.push({<span class="hljs-number">0</span>,x});
 <p>음수인 간선이 다익스트라 알고리즘에 있으면 안되는 이유도 자명하다.
 가중치가 최소인 간선을 찾아 나가는 방식으로 동작하는데에 있어 오류를 발생시킨다.</p>
 <h4 id="733-%ed%94%8c%eb%a1%9c%ec%9d%b4%eb%93%9c-%ec%9b%8c%ec%85%9c-%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98-floyd-warshall">7.3.3 플로이드-워셜 알고리즘 (Floyd-Warshall)</h4>
-<h2 id="11%ec%9e%a5--%ec%88%98%ed%95%99">11장 : 수학</h2>
-<p>이ㅈ 장에서는 수학 관련 주제를 몇가지 살핀다. 이론적인 내용 조금과 이의 알고리즘적 대입을 다룬다.</p>
+<h2 id="11%ec%9e%a5--%ec%88%98%ed%95%99-mathematics">11장 : 수학 <em>Mathematics</em></h2>
+<p>이 장에서는 수학 관련 주제를 몇가지 살핀다. 이론적인 내용 조금과 이의 알고리즘적 대입을 다룬다.</p>
 <h3 id="111-%ec%a0%95%ec%88%98%eb%a1%a0-number-theory">11.1 정수론 <em>Number Theory</em></h3>
+<h4 id="1111-%ec%86%8c%ec%88%98%ec%99%80-%ec%9d%b8%ec%88%98">11.1.1 소수와 인수</h4>
+<p>소인수 분해 관련 내용</p>
+<p>인수의 개수 = ∏ 소인수의 차수 + 1</p>
+<p>인수의 합 = ∏ ( ∑ 소인수의 각 차수 )
+인수의 합 공식은 등비수열의 합 공식으로 정리하여 더욱 간결히 할 수 있다.</p>
+<p>정수 n이 소수가 아니라면 두 정수의 곱 a*b로 나타낼 수 있다. 이때 a&lt;= n^(1/2) 혹은 b&lt;= n^(1/2) 가 성립한다.
+이를 이용하여 정수가 소수인지 판별하는 과정과 소인수 분해를 구하는 과정을 모두 O( n^(1/2) ) 시간에 해결할 수 있다.</p>
+<p>다음 코드는 정수의 소수 여부를 확인하는 함수이다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">is_prime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>{
+    <span class="hljs-keyword">if</span> (n&lt;<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>; i*i&lt;=n; a++){
+        <span class="hljs-keyword">if</span> (n%i==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+</div></code></pre>
+<p>다음 코드는 소인수 분해를 하여 소인수를 벡터에 저장하는 함수이다.</p>
+<pre><code class="language-cpp"><div><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; factors(<span class="hljs-keyword">int</span> n){
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; f;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>; i*i &lt;= n; i++){
+        <span class="hljs-keyword">while</span> (n%i==<span class="hljs-number">0</span>){ <span class="hljs-comment">//소인수 i를 최대한 뺀다</span>
+            f.push_back(x);
+            n /= i;
+        }
+    }
+    <span class="hljs-keyword">if</span>(n&gt;<span class="hljs-number">1</span>) f.push_back(n); <span class="hljs-comment">//마지막 소인수</span>
+    <span class="hljs-keyword">return</span> f;
+}
+</div></code></pre>
+<p>각각의 소인수가 등장하는 회수가 소인수분해의 소인수의 차수에 해당한다.</p>
+<p>소수는 무한히 많다. 이는 다양한 증명이 있는데 가장 유명한 것은 유클리드의 증명과 오일러의 증명이다.</p>
+<p>유클리드의 증명은 귀류법 (Proof by Contradiction)에 의한것으로 {p1,p2,...pn}으로 된 유한한 소수의 집합이 있다면
+p1<em>p2</em>...*pn + 1은 이 집합에 있는 어떠한 수로도 나누어지지 않으니 모순이 생겨 소수가 더 존재한다는 증명이다.</p>
+<p>오일러의 증명은 소수의 역수의 합이 무한대가 됨을 보이는 증명이다. (내용 재밌으니 따로 찾아보길)</p>
+<p>소수 계량 함수(Prime-counting Function)는 n 이하의 소수의 개수를 나타내는 함수이다.
+이 함수는 ~ n / ln(n) 을 성립한다. (이 근사는 가우스의 근사)
+이 식에 의하면 생각보다 소수는 빈번하게 발생된다.</p>
+<h4 id="%ec%97%90%eb%9d%bc%ed%86%a0%ec%8a%a4%ed%85%8c%eb%84%a4%ec%8a%a4%ec%9d%98-%ec%b2%b4-sieve-of-eratosthenes">에라토스테네스의 체 (Sieve of Eratosthenes)</h4>
+<p>에라토스테네스의 체는 2이상 n 이하의 정수 x가 소수인지를 효율적으로 판별하기 위해 sieve (체, 그물망) 배열을 만드는 전처리 알고리즘이다.
+x가 소수면 sieve[x]=0 이고 x가 소수가 아니면 sieve[x]=1이다.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif">
 
     </body>
     </html>
