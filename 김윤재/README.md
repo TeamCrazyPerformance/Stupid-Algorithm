@@ -925,7 +925,7 @@ for (int i=2; i<=n; i++){
 
 ∑(n/i) = (n/2) + (n/3) + ... = n log(n)
 
-#### 11.1.3 유클리드 알고리즘 (Euclidean Algorithm)
+## 12장 : 고급 그래프 알고리즘
 
 
 
